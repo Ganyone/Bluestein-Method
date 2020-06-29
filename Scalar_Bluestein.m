@@ -39,7 +39,7 @@ fy1=ystart+fs/2;
 fy2=yend+fs/2;
 a = -exp(j*2*pi*fy1/fs);                                                    % define A according to Equation 13
 w = exp(-j*2*pi*(fy2-fy1)/(myout*fs));                                      % define W according to Equation 14
-gout = BLHU(gout,myout,w,a);%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+gout = czt(gout,myout,w,a);%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 lly=linspace(0,myout-1,myout);lly=lly./myout.*(fy2-fy1)+fy1;
 Mshifty=floor(-myin/2);
 Mshift=repmat(exp(-1i.*2*pi.*lly.*Mshifty/fs),[mxin 1]);                    % define Pshift according to Equation 15
@@ -49,7 +49,7 @@ fx1=xstart+fs/2;
 fx2=xend+fs/2;
 a = -exp(j*2*pi*fx1/fs);                                                    % define A according to Equation 13
 w = exp(-j*2*pi*(fx2-fx1)/(mxout*fs));                                      % define W according to Equation 14
-gout = BLHU(gout,mxout,w,a);%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+gout = czt(gout,mxout,w,a);%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 llx=linspace(0,mxout-1,mxout);llx=llx./mxout.*(fx2-fx1)+fx1;
 Mshiftx=floor(-mxin/2);
 Mshift=repmat(exp(-1i.*2*pi.*llx.*Mshiftx/fs),[myout 1]);                   % define Pshift according to Equation 15

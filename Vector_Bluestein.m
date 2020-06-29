@@ -90,25 +90,25 @@ ax = -exp(j*2*pi*Cxstart/fs);                                               % de
 wx = exp(-j*2*pi*(Cxend-Cxstart)/(Moutx*fs));                               % define W (x) according to Equation 14
 
 
-EHold = BLHU(Ex,Mouty,wy,ay);
+EHold = czt(Ex,Mouty,wy,ay);
 lly=linspace(0,Mouty-1,Mouty);lly=lly./Mouty.*(Cyend-Cystart)+Cystart;
 Mshifty=floor(-Min/2);                                                      % define Pshift (y) according to Equation 15
 Mshifty=repmat(exp(-1i.*2*pi.*lly.*Mshifty/fs),[Min 1]);
 EHold=EHold.'.*Mshifty;
-EHold = BLHU(EHold,Moutx,wx,ax);
+EHold = czt(EHold,Moutx,wx,ax);
 llx=linspace(0,Moutx-1,Moutx);llx=llx./Moutx.*(Cxend-Cxstart)+Cxstart;
 Mshiftx=floor(-Min/2);                                                      % define Pshift (x) according to Equation 15
 Mshiftx=repmat(exp(-1i.*2*pi.*llx.*Mshiftx/fs),[Mouty 1]);
 Ex=EHold.'.*Mshiftx;
 
-EHold = BLHU(Ey,Mouty,wy,ay);
+EHold = czt(Ey,Mouty,wy,ay);
 EHold=EHold.'.*Mshifty;
-EHold = BLHU(EHold,Moutx,wx,ax);
+EHold = czt(EHold,Moutx,wx,ax);
 Ey=EHold.'.*Mshiftx;
 
-EHold = BLHU(Ez,Mouty,wy,ay);
+EHold = czt(Ez,Mouty,wy,ay);
 EHold=EHold.'.*Mshifty;
-EHold = BLHU(EHold,Moutx,wx,ax);
+EHold = czt(EHold,Moutx,wx,ax);
 Ez=EHold.'.*Mshiftx;
 
 clear EHold;                    
