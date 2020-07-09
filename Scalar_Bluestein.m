@@ -1,5 +1,5 @@
 %%%%%%Scalar diffraction computation method using Bluestein method
-%%%%%%The work is under review by Light: Science and Applications;
+%%%%%%The work is published by Light: Science and Applications, DOI:10.1038/s41377-020-00362-z;
 %%%%%%Please cite properly if you use the codes for any use
 %%%%%%unit: um
 
@@ -28,7 +28,7 @@ x1=linspace(xstart,xend,mxout);                                             % tr
 y1=linspace(ystart,yend,myout);                                             % longitudinal coordinates (y) in the imaging plane
 [x1,y1]=meshgrid(x1,y1);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                          % calculating scalar diffraction below
-F0=exp(j*k*d)/(j*lamda*d).*exp(j*k/2/d*(x1.^2+y1.^2));                      % assign exp(ikd)/(i¦Ëd)exp[ik(x2+y2) /2d]; Equation 4 in the paper
+F0=exp(j*k*d)/(j*lamda*d).*exp(j*k/2/d*(x1.^2+y1.^2));                      % assign exp(ikd)/(iÂ¦Ã‹d)exp[ik(x2+y2) /2d]; Equation 4 in the paper
 F=exp(j*k/2/d*(x0.^2+y0.^2));                                               % assign exp[ik (x02+y02) /2d]; Equation 5 in the paper
 gout=gin.*F;
 % gout=F0.*fftshift(fft2(fftshift(gout)));                                  % using FFT to calculate the complex amplitude of the outgoing light beam
