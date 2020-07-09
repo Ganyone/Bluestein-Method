@@ -1,5 +1,5 @@
 %%%%%%Vector diffraction computation method using Bluestein method
-%%%%%%The work is under review by Light: Science and Applications;
+%%%%%%The work is published by Light: Science and Applications, DOI:10.1038/s41377-020-00362-z;
 %%%%%%Please cite properly if you use the codes for any use
 %%%%%%unit: um
 
