@@ -4,7 +4,7 @@
 
 clear all;
 clc;
-tic;
+%tic
 
 global lamda k n1 NA fo
 lamda=800e-3;                                                               % wavelength
@@ -123,7 +123,7 @@ Iy = abs(Ey).^2;
 Iz = abs(Ez).^2;
 I = Ix+Iy+Iz;                                                               % total intensity
 Imax=max(max(I));
-toc
+%toc
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%                                                % calibrate field dimensions
 x = linspace(startx,endx,mx);
 y = linspace(starty,endy,my);
@@ -158,7 +158,7 @@ waitbar(index./loop)
 II(:,index)=I(:,round((mx+1)/2));
 end
 close(h);
-toc
+%toc
 IImax=max(max(II));
 
 z=linspace(startz,endz,mz);
@@ -166,5 +166,3 @@ y=linspace(starty,endy,my);
 figure
 surfc(z./lamda,y./lamda,II./IImax), colormap hot, axis equal, view([180, -90]),
 shading interp
-
-toc
