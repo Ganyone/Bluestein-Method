@@ -73,7 +73,7 @@ y2=linspace(y2start,y2end,my2);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%propagation through a lens
 f=200e3;                                                                    % lens focal length
 g1=g1.*exp(-1i.*k./2./f.*(x2.^2+y2.^2));                                    % transmittance function
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%alculate the light after propagation d
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%calculate the light after propagation d
 d=200e3+1.8e3;
 L=2*R;
 x3start=-L./2;
@@ -94,7 +94,10 @@ figure
 imshow(angle(g1),[]);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%vector diffraction xy plane
-M = 1080;                                                                   % resolution of input plane
+M = mx3;                                                                   % resolution of input plane
+[xx,yy]=meshgrid(-(M-1)/2:(M-1)/2,-(M-1)/2:(M-1)/2);
+[xx,yy]=meshgrid(-(M-1)/2:(M-1)/2,-(M-1)/2:(M-1)/2);
+Aperture2=sign(1-sign(xx.^2+yy.^2-((M-1)./2).^2));                         % circular aperture
 my=500;                                                                     % desired resolution in the imaging plane
 mx=500;
 startx = -5*lamda;                                                          % start position x
@@ -110,7 +113,7 @@ polar='rc';
 % polar='ra';
 % polar='az';
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%           % input light amplitude and phase
-E=g1;
+E=g1.*Aperture2;
 % E(thh>asin(NA./n1))=0;                                                    % remove parts outside numerical aperture
 % figure
 % surf(m, n,angle(E)), title 'on the obj. pup.',axis equal, axis tight, view([0, 270]), colorbar, shading interp
